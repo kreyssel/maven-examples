@@ -30,6 +30,7 @@
 				<version>${hibernate.version}</version>
 			</dependency>
 
+			<!-- import all managed dependencies defined in hibernate-parent -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-parent</artifactId>
@@ -49,6 +50,7 @@
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
+			<!-- version like defined in hibernate-parent -->
 		</dependency>
 	</dependencies>
 
