@@ -5,15 +5,51 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.kreyssel.mavenexamples.importscope</groupId>
-	<artifactId>importscope-project</artifactId>
+	<artifactId>importscope-hibernate-javassist</artifactId>
 	<version>1.2.3-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
-	<name>Maven Examples :: Import Scope :: Project</name>
+	<name>Maven Examples :: Import Scope</name>
 
-	<modules>
-		<module>module-a</module>
-		<module>module-b</module>
-	</modules>
+	<properties>
+		<hibernate.version>3.6.1.Final</hibernate.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-parent</artifactId>
+				<version>${hibernate.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
