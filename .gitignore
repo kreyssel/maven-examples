@@ -1,0 +1,11 @@
+
+/import-scope/.settings
+/import-scope/.project
+/import-scope/project-a/target
+/import-scope/project-a/.project
+/import-scope/project-a/.settings
+/import-scope/project-a/.classpath
+/import-scope/project-b/target
+/import-scope/project-b/.project
+/import-scope/project-b/.settings
+/import-scope/project-b/.classpath

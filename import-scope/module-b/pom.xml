@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.kreyssel.mavenexamples.importscope</groupId>
+		<artifactId>importscope-project</artifactId>
+		<version>1.2.3-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>importscope-module-b</artifactId>
+
+	<name>Maven Examples :: Import Scope :: Module B</name>
+
+	<properties>
+		<modulea.version>1.2.3-SNAPSHOT</modulea.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.kreyssel.mavenexamples.importscope</groupId>
+				<artifactId>importscope-module-a</artifactId>
+				<version>${modulea.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.kreyssel.mavenexamples.importscope</groupId>
+			<artifactId>importscope-module-a</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+
+		<profile>
+			<id>add-optional-dependency</id>
+
+			<!-- this imports all managed dependencys defined in the dependencyManagement section in module a, this imports the version 
+				for commons-io in this -->
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.kreyssel.mavenexamples.importscope</groupId>
+						<artifactId>importscope-module-a</artifactId>
+						<version>${modulea.version}</version>
+						<type>pom</type>
+						<scope>import</scope>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+
+			<dependencies>
+				<!-- this adds the optional dependency from module a as a real dependency for module b, but without define a version, 
+					the version is used from module a -->
+				<dependency>
+					<groupId>commons-io</groupId>
+					<artifactId>commons-io</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+</project>
