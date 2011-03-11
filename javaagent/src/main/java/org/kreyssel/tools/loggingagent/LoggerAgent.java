@@ -106,7 +106,8 @@ public class LoggerAgent implements ClassFileTransformer {
     }
 
     /**
-     * modify code and add log statements
+     * modify code and add log statements before the original method is called
+     * and after the original method was called
      */
     private void doMethod( final CtBehavior method ) throws NotFoundException, CannotCompileException {
 
